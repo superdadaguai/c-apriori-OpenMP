@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "apriori.h"
+
 #define MAX_LEVELS 5              // Maximum frequent set size.
 #define MAX_CSV_LINE_LENGTH 4000  // Maximum number of characters a CSV header can have.
 #define BUFFER_LEN 50             // Default buffer len
 #define HASH_TABLE_SIZE 16384     // Needs to be big enough to contain the hashes of the supports
-#define DEFAULT_MIN_SUPPORT 0.005
-#define DEFAULT_MIN_CONFIDENCE 0.6
 
 /**
  * @brief Struct that describes a table containing integer data.
@@ -42,6 +42,20 @@ static void fatalError(const char *format, ...) {
     vfprintf(stderr, format, args);
     va_end(args);
     exit(EXIT_FAILURE);
+}
+
+/**
+ * @brief Prints a warning message to stderr.
+ *
+ * @param format Message to print
+ * @param ... Var args. Use is similar to printf.
+ */
+static void warning(const char *format, ...) {
+    fprintf(stderr, "Warning: ");
+    va_list args;
+    va_start(args, format);
+    vfprintf(stderr, format, args);
+    va_end(args);
 }
 
 /**
@@ -217,7 +231,8 @@ TableData *readCSV(const char *path) {
     size_t headerLength = 0;
     int numRead = getline(&headerLine, &headerLength, csvFile);
     if (numRead == -1) {
-        fatalError("Invalid CSV file");
+        warning("Invalid CSV file. Could not read header of file at path: %s\n", path);
+        return NULL;
     }
     int numCols = 0;
     for (int i = 0; i < numRead; i++) {
@@ -503,30 +518,21 @@ void generateAssociationRules(LevelSets **sets, int n, const TableData *data, fl
     }
 }
 
-int main(int argc, char *argv[]) {
-    // Read input arguments
-    if (argc != 2 && argc != 4) {
-        fatalError(
-            "Please provide an input csv file, a minimum support and a "
-            "minimum confidence %d\n",
-            argc);
+/**
+ * @brief Performs the apriori algorithms on the data located at the csv Path and prints all the corresponding
+ * association rules.
+ *
+ * @param csvPath Path to a csv file. The CSV file is assumed to have a header. Each row signifies a
+ * transaction and each column a product. An entry in this table is either a single character or empty, depending on
+ * whether the product occured in the provided transacion.
+ * @param minSupport The minimum support a frequent item set must have.
+ * @param minConfidence The minimum confidence an association rule must have to be printed.
+ */
+void apriori(const char *csvPath, float minSupport, float minConfidence) {
+    TableData *data = readCSV(csvPath);
+    if (!data) {
+        return;
     }
-
-    TableData *data = readCSV(argv[1]);
-    // Use some defaults
-    float minSupport = DEFAULT_MIN_SUPPORT;
-    float minConfidence = DEFAULT_MIN_CONFIDENCE;
-    if (argc == 4) {
-        minSupport = atof(argv[2]);
-        minConfidence = atof(argv[3]);
-    } else {
-        fprintf(stderr,
-                "No minimum support and confidence provided; using defaults %lf "
-                "and %lf\n",
-                minSupport, minConfidence);
-    }
-
-    // Create hash table to store the support values in.
     hcreate(HASH_TABLE_SIZE);
 
     int numLevels;
@@ -541,6 +547,4 @@ int main(int argc, char *argv[]) {
     free(sets);
     freeCSV(data);
     hdestroy();
-
-    return EXIT_SUCCESS;
 }

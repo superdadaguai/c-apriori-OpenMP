@@ -19,10 +19,10 @@ endif
 LIBS= -lm
 
 # define C source files
-SRCS= src/apriori.c
+SRCS= src/apriori.c src/main.c
 
 # define C header files
-HDRS=
+HDRS= src/apriori.h
 
 # --- TARGETS
 all: ${MAIN}
