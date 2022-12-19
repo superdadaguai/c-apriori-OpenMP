@@ -19,7 +19,7 @@ endif
 LIBS= -lm
 
 # define C source files
-SRCS= apriori.c
+SRCS= src/apriori.c
 
 # define C header files
 HDRS=
