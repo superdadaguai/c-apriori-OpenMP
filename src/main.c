@@ -7,6 +7,7 @@
 #define DEFAULT_MIN_SUPPORT 0.005
 #define DEFAULT_MIN_CONFIDENCE 0.6
 
+// Timing utils
 typedef struct {
     struct timeval startTime;
     struct timeval endTime;
@@ -44,7 +45,7 @@ int main(int argc, char *argv[]) {
     }
     Timer timer;
     startTime(&timer);
-    apriori(argv[1], minSupport, minConfidence);
+    aprioriCSV(argv[1], minSupport, minConfidence);
 
     stopTime(&timer);
     printf("\nExecution took %lf sec.\n", elapsedTime(timer));
