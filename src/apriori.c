@@ -5,9 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_LEVELS 5           // Maximum frequent set size.
-#define BUFFER_LEN 50          // Default buffer len
-#define HASH_TABLE_SIZE 16384  // Needs to be big enough to contain the hashes of the supports
+#define MAX_LEVELS 5   // Maximum frequent set size.
+#define BUFFER_LEN 50  // Default buffer len
 #define USE_ANTI_MONOTONICITY_SUPPORT
 #define USE_ANTI_MONOTONICITY_CONFIDENCE
 // #define PRINT_UTILS
@@ -75,6 +74,7 @@ inline static int mapGet(char *key) {
     ENTRY *result;
     item.key = key;
     result = hsearch(item, FIND);
+    free(key);
     return result == NULL ? -1 : (int)result->data;
 }
 
@@ -487,7 +487,7 @@ inline static float confidence(const int *set, int numLeft, int setSupport) {
 #ifdef USE_ANTI_MONOTONICITY_CONFIDENCE
 void pruneSubsets(const int *set, int n) {
     int subsetNum = (1 << n);
-    static int subset[MAX_LEVELS];  // setSize is small enough to allocate on the stack
+    static int subset[MAX_LEVELS + 1];  // setSize is small enough to allocate on the stack
 
     while (subsetNum-- > 0) {
         int subsetMask = subsetNum;
@@ -602,7 +602,14 @@ void apriori(TableData *data, float minSupport, float minConfidence) {
         warning("No data preset in the provided data variable.");
         return;
     }
-    hcreate(HASH_TABLE_SIZE);
+    int n = data->numRows > data->numCols ? data->numRows : data->numCols;
+    int hashTableSize = 1;
+    // Needs to be big enough to contain the hashes of the supports
+    // The next power of 2 larger than the number of transactions/products seems to be a good starting point.
+    while (hashTableSize < n) {
+        hashTableSize <<= 1;
+    }
+    hcreate(hashTableSize);
 
     int numLevels;
     int minSupportRows = data->numRows * minSupport;
@@ -612,7 +619,8 @@ void apriori(TableData *data, float minSupport, float minConfidence) {
 
     // Clean up
     for (int i = 0; i < numLevels; i++) {
-        freeLevelSet(sets[i]);
+        LevelSets *set = sets[i];
+        freeLevelSet(set);
     }
     free(sets);
     hdestroy();
