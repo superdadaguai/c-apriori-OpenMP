@@ -31,7 +31,7 @@ all: ${MAIN}
 ${MAIN}: ${SRCS} ${HDRS}
 	@echo #
 	@echo "-- BUILDING PROGRAM --"
-	${CC} ${SRCS} ${CFLAGS} ${LIBS} -o ${MAIN}
+	${CC} ${SRCS} -pg ${LIBS} -o ${MAIN}
 
 clean:
 	@echo #
