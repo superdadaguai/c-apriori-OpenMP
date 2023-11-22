@@ -1,5 +1,5 @@
 #include "apriori.h"
-
+#include <omp.h>
 #include <search.h>
 #include <stdarg.h>
 #include <stdio.h>

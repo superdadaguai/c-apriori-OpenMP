@@ -16,7 +16,7 @@ else
 endif
 
 # define any libraries to link into executable
-LIBS= -lm
+LIBS= -lm -fopenmp
 
 # define C source files
 SRCS= src/apriori.c src/main.c
@@ -31,7 +31,7 @@ all: ${MAIN}
 ${MAIN}: ${SRCS} ${HDRS}
 	@echo #
 	@echo "-- BUILDING PROGRAM --"
-	${CC} ${SRCS} -pg ${LIBS} -o ${MAIN}
+	${CC} ${SRCS} -pg -O3 -ftree-vectorize -fopt-info-vec-missed -fopt-info-vec-optimized ${LIBS} -o ${MAIN}
 
 clean:
 	@echo #
