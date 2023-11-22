@@ -1,0 +1,203 @@
+-- BUILDING PROGRAM --
+gcc src/apriori.c src/main.c -pg -O3 -ftree-vectorize -fopt-info-vec-missed -fopt-info-vec-optimized -lm -fopenmp -o apriori
+src/apriori.c: In function ‘mapPut’:
+src/apriori.c:68:24: warning: initialization of ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   68 |     ENTRY item = {key, val};
+      |                        ^~~
+src/apriori.c:68:24: note: (near initialization for ‘item.data’)
+src/apriori.c: In function ‘mapGet’:
+src/apriori.c:78:34: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   78 |     return result == NULL ? -1 : (int)result->data;
+      |                                  ^
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:10: missed: statement clobbers memory: __builtin_fwrite ("Warning: ", 1, 9, stderr.7_1);
+src/apriori.c:47:5: missed: statement clobbers memory: __builtin_va_start (&args, 0);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:130:10: missed: statement clobbers memory: __vfprintf_chk (stderr.8_2, 1, format_5(D), &args);
+src/apriori.c:49:5: missed: statement clobbers memory: __builtin_va_end (&args);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:10: missed: statement clobbers memory: __builtin_fwrite ("Fatal error: ", 1, 13, stderr.10_1);
+src/apriori.c:32:5: missed: statement clobbers memory: __builtin_va_start (&args, 0);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:130:10: missed: statement clobbers memory: __vfprintf_chk (stderr.11_2, 1, "safeMalloc(%d) failed.\n", &args);
+src/apriori.c:34:5: missed: statement clobbers memory: __builtin_va_end (&args);
+src/apriori.c:35:5: missed: statement clobbers memory: exit (1);
+src/apriori.c:351:21: missed: couldn't vectorize loop
+src/apriori.c:351:21: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _47 = __builtin___snprintf_chk (tmp_66, 50, 1, 18446744073709551615, "%d", _44);
+src/apriori.c:355:9: missed: couldn't vectorize loop
+src/apriori.c:355:9: missed: not vectorized: control flow in loop.
+src/apriori.c:105:17: missed: statement clobbers memory: buf_39 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _47 = __builtin___snprintf_chk (tmp_66, 50, 1, 18446744073709551615, "%d", _44);
+src/apriori.c:76:14: missed: statement clobbers memory: result_34 = hsearch (item, 0);
+src/apriori.c:77:5: missed: statement clobbers memory: free (buf_39);
+src/apriori.c:492:11: missed: couldn't vectorize loop
+src/apriori.c:492:11: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _36 = __builtin___snprintf_chk (tmp_62, 50, 1, 18446744073709551615, "%d", _33);
+src/apriori.c:495:9: missed: couldn't vectorize loop
+src/apriori.c:495:9: missed: not vectorized: control flow in loop.
+src/apriori.c:105:17: missed: statement clobbers memory: buf_7 = malloc (50);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_28 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _36 = __builtin___snprintf_chk (tmp_62, 50, 1, 18446744073709551615, "%d", _33);
+src/apriori.c:69:5: missed: statement clobbers memory: hsearch (item, 1);
+src/apriori.c:621:5: missed: couldn't vectorize loop
+src/apriori.c:119:5: missed: statement clobbers memory: free (_37);
+src/apriori.c:567:5: missed: couldn't vectorize loop
+src/apriori.c:567:5: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:572:9: missed: couldn't vectorize loop
+src/apriori.c:572:9: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:580:19: missed: couldn't vectorize loop
+src/apriori.c:580:19: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:219:5: missed: couldn't vectorize loop
+src/apriori.c:219:5: missed: not vectorized: control flow in loop.
+src/apriori.c:209:5: missed: couldn't vectorize loop
+src/apriori.c:209:5: missed: not vectorized: control flow in loop.
+src/apriori.c:492:11: missed: couldn't vectorize loop
+src/apriori.c:492:11: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _491 = __builtin___snprintf_chk (tmp_461, 50, 1, 18446744073709551615, "%d", _488);
+src/apriori.c:495:9: missed: couldn't vectorize loop
+src/apriori.c:495:9: missed: not vectorized: control flow in loop.
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _412 = __builtin___snprintf_chk (tmp_276, 50, 1, 18446744073709551615, "%d", _409);
+src/apriori.c:533:5: missed: couldn't vectorize loop
+src/apriori.c:533:5: missed: not vectorized: control flow in loop.
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _390 = __builtin___snprintf_chk (tmp_92, 50, 1, 18446744073709551615, "%d", _387);
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _326 = __builtin___snprintf_chk (tmp_275, 50, 1, 18446744073709551615, "%d", _323);
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _343 = __builtin___snprintf_chk (tmp_261, 50, 1, 18446744073709551615, "%d", _340);
+src/apriori.c:460:14: missed: couldn't vectorize loop
+src/apriori.c:460:14: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:388:5: missed: couldn't vectorize loop
+src/apriori.c:388:5: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:390:13: missed: couldn't vectorize loop
+src/apriori.c:390:13: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+src/apriori.c:107:5: missed: couldn't vectorize loop
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _307 = __builtin___snprintf_chk (tmp_659, 50, 1, 18446744073709551615, "%d", _304);
+src/apriori.c:310:5: missed: couldn't vectorize loop
+src/apriori.c:310:5: missed: not vectorized: control flow in loop.
+src/apriori.c:313:34: missed: couldn't vectorize loop
+src/apriori.c:313:34: missed: not vectorized: control flow in loop.
+src/apriori.c:399:13: optimized: loop vectorized using 16 byte vectors
+src/apriori.c:399:13: optimized:  loop versioned for vectorization because of possible aliasing
+src/apriori.c:391:39: missed: couldn't vectorize loop
+src/apriori.c:391:39: missed: not vectorized: control flow in loop.
+src/apriori.c:91:5: optimized: loop vectorized using 16 byte vectors
+src/apriori.c:334:5: missed: couldn't vectorize loop
+src/apriori.c:334:5: missed: not vectorized: control flow in loop.
+src/apriori.c:310:5: missed: couldn't vectorize loop
+src/apriori.c:313:30: missed: not vectorized: not suitable for gather load _142 = *_141;
+src/apriori.c:447:5: missed: couldn't vectorize loop
+src/apriori.c:447:5: missed: not vectorized: number of iterations cannot be computed.
+src/apriori.c:91:5: optimized: loop vectorized using 16 byte vectors
+src/apriori.c:609:11: missed: couldn't vectorize loop
+src/apriori.c:609:11: missed: not vectorized: number of iterations cannot be computed.
+src/apriori.c:598:9: missed: statement clobbers memory: warning ("No data preset in the provided data variable.");
+src/apriori.c:612:5: missed: statement clobbers memory: hcreate (prephitmp_769);
+src/apriori.c:60:15: missed: statement clobbers memory: p_117 = malloc (_116);
+src/apriori.c:62:9: missed: statement clobbers memory: fatalError.constprop ("safeMalloc(%d) failed.\n", _103);
+src/apriori.c:60:15: missed: statement clobbers memory: p_166 = malloc (16);
+src/apriori.c:62:9: missed: statement clobbers memory: fatalError.constprop ("safeMalloc(%d) failed.\n", 16);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_167 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: __builtin___snprintf_chk (buf_167, 50, 1, 18446744073709551615, "%d", _172);
+src/apriori.c:69:5: missed: statement clobbers memory: hsearch (item, 1);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __printf_chk (1, "Size of large itemsets l(%d) %d\n", 1, setIdx_593);
+src/apriori.c:60:15: missed: statement clobbers memory: p_119 = malloc (80);
+src/apriori.c:62:9: missed: statement clobbers memory: fatalError.constprop ("safeMalloc(%d) failed.\n", 80);
+src/apriori.c:60:15: missed: statement clobbers memory: p_298 = malloc (_297);
+src/apriori.c:62:9: missed: statement clobbers memory: fatalError.constprop ("safeMalloc(%d) failed.\n", _403);
+src/apriori.c:422:9: missed: statement clobbers memory: free (p_97);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __builtin_putchar (10);
+src/apriori.c:404:18: missed: statement clobbers memory: _237 = subsetsExist (_217, _85);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_299 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _307 = __builtin___snprintf_chk (tmp_659, 50, 1, 18446744073709551615, "%d", _304);
+src/apriori.c:69:5: missed: statement clobbers memory: hsearch (item, 1);
+src/apriori.c:60:15: missed: statement clobbers memory: p_312 = malloc (16);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __printf_chk (1, "Size of large itemsets l(%d) %d\n", _85, setIdx_270);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_335 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _343 = __builtin___snprintf_chk (tmp_261, 50, 1, 18446744073709551615, "%d", _340);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_318 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _326 = __builtin___snprintf_chk (tmp_275, 50, 1, 18446744073709551615, "%d", _323);
+src/apriori.c:76:14: missed: statement clobbers memory: result_313 = hsearch (item, 0);
+src/apriori.c:77:5: missed: statement clobbers memory: free (buf_154);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_382 = malloc (50);
+src/apriori.c:76:14: missed: statement clobbers memory: result_377 = hsearch (item, 0);
+src/apriori.c:77:5: missed: statement clobbers memory: free (buf_382);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _390 = __builtin___snprintf_chk (tmp_92, 50, 1, 18446744073709551615, "%d", _387);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_404 = malloc (50);
+src/apriori.c:76:14: missed: statement clobbers memory: result_399 = hsearch (item, 0);
+src/apriori.c:77:5: missed: statement clobbers memory: free (buf_404);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _412 = __builtin___snprintf_chk (tmp_276, 50, 1, 18446744073709551615, "%d", _409);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: missed: statement clobbers memory: _428 = __builtin_sprintf (curBuffer_266, "%s", _425);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: missed: statement clobbers memory: _433 = __builtin_sprintf (curBuffer_430, ", ");
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: missed: statement clobbers memory: __builtin_sprintf (curBuffer_567, "}");
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __printf_chk (1, "{%-60s => {", &buffer1);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: missed: statement clobbers memory: _452 = __builtin_sprintf (curBuffer_588, "%s", _449);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: missed: statement clobbers memory: _457 = __builtin_sprintf (curBuffer_454, ", ");
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: missed: statement clobbers memory: __builtin_sprintf (curBuffer_437, "}");
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __printf_chk (1, "%-30s%s%.1lf\n", &buffer1, "Confidence: ", _464);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_52 = malloc (50);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_483 = malloc (50);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:67:10: missed: statement clobbers memory: _491 = __builtin___snprintf_chk (tmp_461, 50, 1, 18446744073709551615, "%d", _488);
+src/apriori.c:69:5: missed: statement clobbers memory: hsearch (item, 1);
+src/apriori.c:119:5: missed: statement clobbers memory: free (_37);
+src/apriori.c:120:5: missed: statement clobbers memory: free (set_31);
+src/apriori.c:625:5: missed: statement clobbers memory: free (p_119);
+src/apriori.c:626:5: missed: statement clobbers memory: hdestroy ();
+src/apriori.c:119:5: missed: statement clobbers memory: free (_440);
+src/apriori.c:120:5: missed: statement clobbers memory: free (set_523);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_410 = malloc (50);
+src/apriori.c:76:14: missed: statement clobbers memory: result_356 = hsearch (item, 0);
+src/apriori.c:77:5: missed: statement clobbers memory: free (buf_335);
+src/apriori.c:105:17: missed: statement clobbers memory: buf_388 = malloc (50);
+src/apriori.c:76:14: missed: statement clobbers memory: result_319 = hsearch (item, 0);
+src/apriori.c:77:5: missed: statement clobbers memory: free (buf_335);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __builtin_putchar (10);
+src/apriori.c:60:15: missed: statement clobbers memory: p_509 = malloc (16);
+src/apriori.c:278:5: missed: couldn't vectorize loop
+src/apriori.c:278:5: missed: not vectorized: control flow in loop.
+src/apriori.c:279:9: missed: couldn't vectorize loop
+src/apriori.c:279:9: missed: not vectorized: control flow in loop.
+src/apriori.c:91:5: optimized: loop vectorized using 16 byte vectors
+src/apriori.c:268:11: missed: couldn't vectorize loop
+src/apriori.c:268:11: missed: not vectorized: control flow in loop.
+src/apriori.c:257:5: missed: couldn't vectorize loop
+src/apriori.c:257:5: missed: not vectorized: control flow in loop.
+src/apriori.c:248:5: optimized: loop vectorized using 16 byte vectors
+src/apriori.c:239:21: missed: statement clobbers memory: csvFile_13 = fopen (csvPath_2(D), "r");
+src/apriori.c:242:19: missed: statement clobbers memory: _14 = getline (&headerLine, &headerLength, csvFile_13);
+src/apriori.c:244:9: missed: statement clobbers memory: warning ("Invalid CSV file. Could not read header of file at path: %s\n", csvPath_2(D));
+src/apriori.c:641:5: missed: statement clobbers memory: apriori (0B, minSupport_5(D), minConfidence_6(D));
+src/apriori.c:129:14: missed: not vectorized: volatile type: _170 ={v} MEM[(struct TableData *)0B].headers;
+src/apriori.c:639:6: missed: statement clobbers memory: __builtin_trap ();
+src/apriori.c:62:9: missed: statement clobbers memory: fatalError.constprop ("safeMalloc(%d) failed.\n", _174);
+src/apriori.c:266:29: missed: statement clobbers memory: dataStartPos_52 = ftell (csvFile_13);
+src/apriori.c:269:13: missed: statement clobbers memory: _53 = fgetc (csvFile_13);
+src/apriori.c:268:13: missed: statement clobbers memory: _56 = feof (csvFile_13);
+src/apriori.c:60:15: missed: statement clobbers memory: p_110 = malloc (_109);
+src/apriori.c:62:9: missed: statement clobbers memory: fatalError.constprop ("safeMalloc(%d) failed.\n", _96);
+src/apriori.c:280:23: missed: statement clobbers memory: _59 = fgetc (csvFile_13);
+src/apriori.c:285:17: missed: statement clobbers memory: fgetc (csvFile_13);
+src/apriori.c:290:5: missed: statement clobbers memory: fclose (csvFile_13);
+src/apriori.c:291:22: missed: statement clobbers memory: csv_82 = malloc (24);
+src/apriori.c:641:5: missed: statement clobbers memory: apriori (csv_82, minSupport_5(D), minConfidence_6(D));
+src/apriori.c:641:5: optimized: basic block part vectorized using 16 byte vectors
+src/apriori.c:129:5: missed: statement clobbers memory: free (_10);
+src/apriori.c:130:5: missed: statement clobbers memory: free (_11);
+src/apriori.c:131:5: missed: statement clobbers memory: free (_12);
+src/apriori.c:132:5: missed: statement clobbers memory: free (csv_82);
+src/apriori.c:276:5: missed: statement clobbers memory: fseek (csvFile_13, dataStartPos_52, 0);
+src/apriori.c:276:5: missed: statement clobbers memory: fseek (csvFile_13, dataStartPos_52, 0);
+src/apriori.c:60:15: missed: statement clobbers memory: p_58 = malloc (0);
+src/apriori.c:60:15: missed: statement clobbers memory: p_32 = malloc (_157);
+src/main.c:16:32: missed: statement clobbers memory: gettimeofday (_1, 0B);
+src/main.c:18:31: missed: statement clobbers memory: gettimeofday (_1, 0B);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:10: missed: statement clobbers memory: __builtin_fwrite ("Please provide an input csv file, a minimum support and a minimum confidence.\n", 1, 78, stderr.0_4);
+src/main.c:31:9: missed: statement clobbers memory: exit (1);
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:27:10: missed: statement clobbers memory: _29 = strtod (_6, 0B);
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:27:10: missed: statement clobbers memory: _28 = strtod (_8, 0B);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:100:10: missed: statement clobbers memory: __fprintf_chk (stderr.1_11, 1, "No minimum support and confidence provided; using defaults %.3lf and %.1lf\n\n", 4.999999888241291046142578125e-3, 6.0000002384185791015625e-1);
+src/main.c:16:32: missed: statement clobbers memory: gettimeofday (&timer.startTime, 0B);
+src/main.c:48:5: missed: statement clobbers memory: aprioriCSV (_13, minSupport_15, minConfidence_16);
+src/main.c:18:31: missed: statement clobbers memory: gettimeofday (&timer.endTime, 0B);
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:107:10: missed: statement clobbers memory: __printf_chk (1, "\nExecution took %lf sec.\n", _14);
