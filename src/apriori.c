@@ -308,6 +308,7 @@ static TableData *readCSV(const char *path) {
  */
 static int calcSupport(const TableData *data, const int *set, int setSize) {
     int support = 0;
+    #pragma omp parallel for reduction(+:support)
     for (int y = 0; y < data->numRows; y++) {
         int supported = 1;
         for (int x = 0; x < setSize; x++) {
