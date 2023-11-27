@@ -245,6 +245,7 @@ static TableData *readCSV(const char *path) {
         return NULL;
     }
     int numCols = 0;
+    // #pragma omp parallel for
     for (int i = 0; i < numRead; i++) {
         if (headerLine[i] == ',' || headerLine[i] == '\n') {
             numCols++;
@@ -385,6 +386,7 @@ static LevelSets *selfJoin(const LevelSets *levelSetK_1, int k, const TableData 
     int **setsAtLevelK_1 = levelSetK_1->sets;
     int setIdx = 0;
     int **setsAtLevelK = allocIntMatrix(k, numNewSets);
+    #pragma omp parallel for
     for (int fs = 0; fs < levelSetK_1->numSets - 1; fs++) {
         for (int ss = fs + 1; ss < levelSetK_1->numSets; ss++) {
             for (int k_1 = 0; k_1 < k - 2; k_1++) {
@@ -392,10 +394,12 @@ static LevelSets *selfJoin(const LevelSets *levelSetK_1, int k, const TableData 
                     // First k-2 elements do not match, so continue with iteration of the outer for loop
                     // One of the few valid use cases of the goto statement :o
                     // I feel like a dinosaur though
+                    #pragma omp flush  // Adiciona uma instrução flush após o goto para garantir consistência
                     goto continue_outer_loop;
                 }
             }
             // Generate new set
+            #pragma omp parallel for
             for (int i = 0; i < k - 1; i++) {
                 setsAtLevelK[setIdx][i] = setsAtLevelK_1[fs][i];
             }
