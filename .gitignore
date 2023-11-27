@@ -54,7 +54,10 @@ dkms.conf
 apriori
 *.exe
 
-*.csv
+data2.csv
+data4.csv
+data8.csv
+data16.csv
 
 .vscode/
 *~
